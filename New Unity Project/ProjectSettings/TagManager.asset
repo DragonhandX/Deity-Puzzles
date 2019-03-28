@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - grappleSpot
+  - lineConnect
   layers:
   - Default
   - TransparentFX

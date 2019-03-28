@@ -45,6 +45,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private KeyCode use_KeyCode = KeyCode.Mouse0;
         private KeyCode equip_KeyCode = KeyCode.Alpha1;
         private bool grappleHook = false;
+        public GameObject prefabGrappleHook;
+        public GameObject codeGrappleHook;
+        private Rigidbody grappleHookRigidbody;
+        public float velocityMult = 8f;
 
         // Use this for initialization
         private void Start()
@@ -99,29 +103,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
                
 
-            /*if (Input.GetKeyDown(use_KeyCode))
-            {
-                RaycastHit grappleLine;
-                int layerMask = 1 << 9;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(m_Camera.transform.forward), out grappleLine, 20f, layerMask))
-                {
-                    Debug.DrawRay(transform.position, transform.TransformDirection(m_Camera.transform.forward) * grappleLine.distance, Color.blue);
-                    Debug.Log("Did Hit");
-                    
-                    grappleTransport();
-                }
-                else
-                {
-                    Debug.DrawRay(transform.position, transform.TransformDirection(m_Camera.transform.forward) * 20f, Color.red);
-                    Debug.Log("Did not Hit");
-                }
-
-            }*/
-            if (Input.GetKeyDown(use_KeyCode) && grappleHook)
+            
+            if (Input.GetKeyDown(use_KeyCode) && grappleHook && !codeGrappleHook)
             {
                 
                 RaycastHit hit;
                 Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
+
+                codeGrappleHook = Instantiate(prefabGrappleHook) as GameObject;
+                grappleHookRigidbody = codeGrappleHook.GetComponent<Rigidbody>();
+                codeGrappleHook.transform.position = m_Camera.transform.position + Vector3.forward;
+                grappleHookRigidbody.velocity = ray.direction * velocityMult;
+                
+                
 
                 if (Physics.Raycast(ray, out hit))
                 {
@@ -129,7 +123,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     Debug.Log("Did Hit");
 
 
-                    grappleTransport(objectHit);
+                    //grappleTransport(objectHit);
                     // Do something with the object that was hit by the raycast.
                 }
                 else
@@ -137,7 +131,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     Debug.Log("Did not Hit");
                 }
             }
-            
+
         }
 
 
@@ -193,7 +187,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 
         }
 
-        private void grappleTransport(Transform obj)
+        /*private void grappleTransport(Transform obj)
         {
             Vector3 currentPos = m_CharacterController.transform.position;
             Debug.Log("LET'S A GO");
@@ -210,7 +204,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 Debug.Log("didn't have grappleSpot tag");
             }
-        }
+        }*/
 
 
         private void PlayJumpSound()

@@ -120,7 +120,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (Physics.Raycast(ray, out hit))
                 {
                     Transform objectHit = hit.transform;
-                    Debug.Log("Did Hit");
+                    //Debug.Log("Did Hit");
 
 
                     //grappleTransport(objectHit);
@@ -128,7 +128,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
                 else
                 {
-                    Debug.Log("Did not Hit");
+                    //Debug.Log("Did not Hit");
                 }
             }
 

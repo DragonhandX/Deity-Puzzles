@@ -112,7 +112,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 codeGrappleHook = Instantiate(prefabGrappleHook) as GameObject;
                 grappleHookRigidbody = codeGrappleHook.GetComponent<Rigidbody>();
-                codeGrappleHook.transform.position = m_Camera.transform.position + Vector3.forward;
+                codeGrappleHook.transform.position = m_Camera.transform.position;
                 grappleHookRigidbody.velocity = ray.direction * velocityMult;
                 
                 

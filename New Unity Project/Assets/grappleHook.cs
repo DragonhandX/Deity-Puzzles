@@ -13,6 +13,7 @@ public class grappleHook : MonoBehaviour {
     public bool transporting = false;
     public static int grappleID = 0;
     public bool hit = false;
+    private IEnumerator coroutine;
 
 
     private void Awake()
@@ -69,7 +70,7 @@ public class grappleHook : MonoBehaviour {
 	void Update () {
         if (transporting == true)
         {
-            StartCoroutine("Moving");
+            //StartCoroutine(Moving());
             character.transform.position = destPos;
             Debug.Log(grappleID+" this is getting read");
             Destroy(this.gameObject);
@@ -92,7 +93,7 @@ public class grappleHook : MonoBehaviour {
         }*/
     }
 
-    IEnumerator Moving()
+    private IEnumerator Moving()
     {
         float journeyLength = Vector3.Distance(pos, destPos);
         float startTime = Time.time;

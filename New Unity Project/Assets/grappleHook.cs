@@ -11,11 +11,14 @@ public class grappleHook : MonoBehaviour {
     Vector3 destPos;
     public float speed = 1.0F;
     public bool transporting = false;
+    public static int grappleID = 0;
+    public bool hit = false;
 
 
     private void Awake()
     {
         character = GameObject.Find("FPSController");
+        grappleID++;
     }
 
 
@@ -24,19 +27,23 @@ public class grappleHook : MonoBehaviour {
     {
 
         GameObject collide = collision.gameObject;
-
-
-        if (collide.tag == "grappleSpot")
+        if (!hit)
         {
-            grappleTransport();
-            //Destroy(this.gameObject);
-            Debug.Log("grapple hook hit a grapple spot...");
+            if (collide.tag == "grappleSpot")
+            {
+                grappleTransport();
+                //Destroy(this.gameObject);
+                Debug.Log(grappleID + " grapple hook hit a grapple spot..." + collide.name);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                Debug.Log(grappleID + " grapple hook did not hit a grapple spot..." + collide.name);
+            }
+            hit = true;
         }
-        else
-        {
-            Destroy(this.gameObject);
-            Debug.Log("grapple hook did not hit a grapple spot...");
-        }
+
+        
     }
 
     public void grappleTransport()
@@ -62,11 +69,14 @@ public class grappleHook : MonoBehaviour {
 	void Update () {
         if (transporting == true)
         {
-            //StartCoroutine("Moving");
+            StartCoroutine("Moving");
             character.transform.position = destPos;
-            Debug.Log("this is getting read");
+            Debug.Log(grappleID+" this is getting read");
+            Destroy(this.gameObject);
         }
         
+        
+
         /*if (transporting == true)
         {
             float journeyLength = Vector3.Distance(pos, destPos);

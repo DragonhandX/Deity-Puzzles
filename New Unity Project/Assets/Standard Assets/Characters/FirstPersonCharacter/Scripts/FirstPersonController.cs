@@ -46,7 +46,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private KeyCode equip_KeyCode = KeyCode.Alpha1;
         private bool grappleHook = false;
         public GameObject prefabGrappleHook;
-        public GameObject codeGrappleHook;
+        private GameObject codeGrappleHook;
         private Rigidbody grappleHookRigidbody;
         public float velocityMult = 8f;
         public GameObject grappleSpawn;
@@ -114,6 +114,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 codeGrappleHook = Instantiate(prefabGrappleHook) as GameObject;
                 grappleHookRigidbody = codeGrappleHook.GetComponent<Rigidbody>();
                 codeGrappleHook.transform.position = grappleSpawn.transform.position;
+                codeGrappleHook.transform.rotation = m_CharacterController.transform.rotation * Quaternion.Euler(45, 0, 0);
                 grappleHookRigidbody.velocity = ray.direction * velocityMult;
                 
                 

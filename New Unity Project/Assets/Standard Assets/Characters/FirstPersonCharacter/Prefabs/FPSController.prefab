@@ -234,7 +234,7 @@ MonoBehaviour:
   m_WalkSpeed: 5
   m_RunSpeed: 10
   m_RunstepLenghten: 0.7
-  m_JumpSpeed: 10
+  m_JumpSpeed: 5
   m_StickToGroundForce: 10
   m_GravityMultiplier: 2
   m_MouseLook:
@@ -346,7 +346,7 @@ MonoBehaviour:
     type: 2}
   codeGrappleHook: {fileID: 0}
   velocityMult: 20
-  grappleSpawn: {fileID: 0}
+  grappleSpawn: {fileID: 1686164262074134}
 --- !u!124 &12474086
 Behaviour:
   m_ObjectHideFlags: 1
@@ -419,7 +419,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1686164262074134}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -463,7 +463,7 @@ BoxCollider:
   m_GameObject: {fileID: 1686164262074134}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

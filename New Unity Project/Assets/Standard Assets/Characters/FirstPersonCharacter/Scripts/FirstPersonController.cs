@@ -49,6 +49,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public GameObject codeGrappleHook;
         private Rigidbody grappleHookRigidbody;
         public float velocityMult = 8f;
+        public GameObject grappleSpawn;
 
         // Use this for initialization
         private void Start()
@@ -112,7 +113,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 codeGrappleHook = Instantiate(prefabGrappleHook) as GameObject;
                 grappleHookRigidbody = codeGrappleHook.GetComponent<Rigidbody>();
-                codeGrappleHook.transform.position = m_Camera.transform.position;
+                codeGrappleHook.transform.position = grappleSpawn.transform.position;
                 grappleHookRigidbody.velocity = ray.direction * velocityMult;
                 
                 

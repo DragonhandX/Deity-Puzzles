@@ -50,6 +50,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Rigidbody grappleHookRigidbody;
         public float velocityMult = 8f;
         public GameObject grappleSpawn;
+        public Canvas prefabCanvas;
+        private Canvas codeCanvas;
+        public GameObject hookButton;
+        private CanvasGroup hookCanvas;
 
         // Use this for initialization
         private void Start()
@@ -65,6 +69,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
             grappleHook = false;
+            codeCanvas = GetComponent<Canvas>();
+            hookCanvas = hookButton.GetComponent<CanvasGroup>();
         }
 
 
@@ -96,9 +102,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 grappleHook = !grappleHook;
                 if (grappleHook == true)
+                {
+                    hookCanvas.alpha = 1f;
                     Debug.Log("Grappling Hook Equipped!!!");
+                }
                 else if (grappleHook == false)
+                {
+                    hookCanvas.alpha = .5f;
                     Debug.Log("Grappling Hook Unequipped...");
+                }
                 else
                     Debug.Log("this is the grappleHook bool, how this happen?");
             }

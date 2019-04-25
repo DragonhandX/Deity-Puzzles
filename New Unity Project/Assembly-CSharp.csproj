@@ -60,6 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\grappleHook.cs" />
+    <Compile Include="Assets\SceneFader.cs" />
+    <Compile Include="Assets\startScreen.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/G00262444/Documents/GitHub/Deity-Puzzles/New Unity Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
